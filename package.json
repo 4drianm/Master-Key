@@ -1,7 +1,7 @@
 {
   "name": "Master Key",
-  "version": "1.0.0",
-  "description": "Generador de contraseñas. Apicacion hecha con Electron.",
+  "version": "0.0.1",
+  "description": "Generador de contraseñas. App hecha con Electron.",
   "main": "main.js",
   "scripts": {
     "start": "electron ."

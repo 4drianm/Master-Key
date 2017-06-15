@@ -1,5 +1,5 @@
 {
-  "name": "Master Key",
+  "name": "MasterKey",
   "version": "0.0.1",
   "description": "Generador de contraseñas. App hecha con Electron.",
   "main": "main.js",
@@ -9,6 +9,6 @@
   "author": "Team1",
   "license": "MIT",
   "dependencies": {
-    "electron-prebuilt": "^1.4.13"
+    "electron": "^1.6.11"
   }
 }

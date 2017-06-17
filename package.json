@@ -9,6 +9,7 @@
   "author": "Team1",
   "license": "MIT",
   "dependencies": {
+    "dexie": "^1.5.1",
     "electron": "^1.6.11"
   }
 }

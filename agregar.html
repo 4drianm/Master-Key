@@ -6,6 +6,23 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Bubbler+One" rel="stylesheet">
+    <style>
+      #p-btn{
+        height: 50px;
+        position: relative;
+      }
+      #p-btn p {
+        margin-top: 25px;
+        position: absolute;
+        width: 100%;
+        left: 75%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);      
+      } 
+      #p-btn p .col-xs-3{
+        float: none;
+      }
+    </style>
   </head>
   <body>
     <br>
@@ -25,31 +42,29 @@
      <br>
       <form action="">
        <div class="form-group">
-            <label for="usuario">Usuario:</label>
+            <label>Usuario:</label>
             <input class="form-control" id="usuario" type="text">
         </div>
         <div class="form-group">
-            <label for="contraseña">Sitio:</label>
-            <input class="form-control" id="sontraseña" type="text" placeholder="https://">
-        </div>
-        <br>
-        <button class="btn btn-primary col-xs-5 col-sm-3 col-md-2 col-lg-2">Generar Contraseña</button>
-        <br>
-        <br>
-        <br>
+            <label>Sitio:</label>
+            <input class="form-control" id="sitio" type="text" placeholder="https://">
+        </div>        
         <div class="form-group">
-            <textarea class="form-control" id="" placeholder="******"></textarea>
-        </div>
-    </form>
+          <label>Contraseña:</label>
+          <textarea class="form-control" id="contraseña" placeholder="******"></textarea>
+        </div>        
+    </form>    
+    <br>  
+    <div id="p-btn">
+      <p>
+        <button class="btn btn-primary col-xs-3 col-sm-3 col-md-3 col-md-2">Generar Contraseña</button>
+        <button class="btn btn-success col-xs-3 col-sm-3 col-md-3 col-md-2"><span class="glyphicon glyphicon-floppy-disk"></span></button>        
+      </p> 
+    </div> 
+    </div>    
     <br>
-    <p>
-      <button class="btn btn-default btn-xs col-xs-1 col-sm-1 col-md-1 col-lg-1"><span class="glyphicon glyphicon-refresh"></span></button>
-    </p>
     <br>
-    <p>
-      <a href="concentrado.html"><button class="btn btn-success col-xs-3 col-sm-3 col-md-3 col-lg-3"><span class="glyphicon glyphicon-floppy-disk"></span></button></a>
-    </p>
-      </div>
+    <a href="concentrado.html"><button class="btn"></span>Regresar</button></a>
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
   </body>

@@ -7,8 +7,10 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">     
     <link href="https://fonts.googleapis.com/css?family=Bubbler+One" rel="stylesheet">
     <style>
-      #foo-btn{
-
+      #claves{
+        min-height: 350px;
+        max-height: 400px;
+        overflow: scroll;
       }
       footer {
       background-color: #f1f1f1;
@@ -16,7 +18,21 @@
       height: 50px;
       position: static;      
       }
-      
+      #p-btn{
+        height: 50px;
+        position: relative;
+      }
+      #p-btn p {
+        margin-top: 25px;
+        position: absolute;
+        width: 100%;
+        left: 75%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);      
+      } 
+      #p-btn p .col-xs-3{
+        float: none;
+      }      
     </style>
   </head>
   <body>
@@ -49,7 +65,7 @@
         </nav>
       </header>
     </div>    
-    <div class="container">               
+    <div class="container" id="claves">               
       <div class="table-responsive">
        <form action="">
         <table class="table table-hover">
@@ -88,18 +104,21 @@
                 <td>arturotg1607@hotmail.com</td>
                 <td>*************</td>
                 <td><label><input type="checkbox" name=""id=""</label></td>
-            </tr>            
+            </tr>                      
         </table>
         </form>
       </div>
+    </div>
+    <div class="container">
       <footer>
-        <div id="foo-btn">
-          <button class="btn btn-danger col-xs-2 col-sm-2 col-md-2 col-lg-2"><span class="glyphicon glyphicon-trash"></span></button>           
-          <a href="agregar.html">
-          <button class="btn btn-primary btn-md col-xs-2 col-sm-2 col-md-2 col-lg-2"><span class="glyphicon glyphicon-plus"></span></button>
-          </a>
-        </div>
-      </footer>           
+        <div id="p-btn">
+          <p>
+           <button class="btn btn-danger col-xs-3 col-sm-3 col-md-3 col-md-2"><span class="glyphicon glyphicon-trash"></span></button>
+           <a href="agregar.html"><button class="btn btn-primary btn-md col-xs-3 col-sm-3 col-md-3 col-md-2"><span class="glyphicon glyphicon-plus"></span></button></a>        
+          </p> 
+        </div>        
+      </footer>
+    </div>           
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
   </body>

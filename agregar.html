@@ -5,24 +5,9 @@
     <title>Master Key</title>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/index.css">
     <link href="https://fonts.googleapis.com/css?family=Bubbler+One" rel="stylesheet">
-    <style>
-      #p-btn{
-        height: 50px;
-        position: relative;
-      }
-      #p-btn p {
-        margin-top: 25px;
-        position: absolute;
-        width: 100%;
-        left: 75%;
-        -ms-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);      
-      } 
-      #p-btn p .col-xs-3{
-        float: none;
-      }
-    </style>
+         
   </head>
   <body>
     <br>
@@ -40,7 +25,7 @@
        </div>
      <div class="container">
      <br>
-      <form action="">
+      <form id="sendDatos">
        <div class="form-group">
             <label>Usuario:</label>
             <input class="form-control" id="usuario" type="text">
@@ -53,19 +38,21 @@
           <label>Contraseña:</label>
           <textarea class="form-control" id="contraseña" placeholder="******"></textarea>
         </div>        
-    </form>    
     <br>  
     <div id="p-btn">
       <p>
         <button class="btn btn-primary col-xs-3 col-sm-3 col-md-3 col-md-2">Generar Contraseña</button>
-        <button class="btn btn-success col-xs-3 col-sm-3 col-md-3 col-md-2"><span class="glyphicon glyphicon-floppy-disk"></span></button>        
+        <button onclick="add()" type"submit" id="btn-D" class="btn btn-success col-xs-3 col-sm-3 col-md-3 col-md-2"><span class="glyphicon glyphicon-floppy-disk"></span></button>
       </p> 
     </div> 
+    </form>
     </div>    
     <br>
     <br>
     <a href="concentrado.html"><button class="btn"></span>Regresar</button></a>
-    <script src="js/jquery.js"></script>
+    <script src="js/webSQL.js"></script>
+    <script src="js/jQuery.js"></script>    
     <script src="js/bootstrap.min.js"></script>
+     
   </body>
 </html>

@@ -4,36 +4,10 @@
     <meta charset="UTF-8">
     <title>Master Key</title>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="stylesheet" href="css/bootstrap.min.css">     
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/index.css">     
     <link href="https://fonts.googleapis.com/css?family=Bubbler+One" rel="stylesheet">
-    <style>
-      #claves{
-        min-height: 350px;
-        max-height: 400px;
-        overflow: scroll;
-      }
-      footer {
-      background-color: #f1f1f1;
-      margin-bottom: -1px;
-      height: 50px;
-      position: static;      
-      }
-      #p-btn{
-        height: 50px;
-        position: relative;
-      }
-      #p-btn p {
-        margin-top: 25px;
-        position: absolute;
-        width: 100%;
-        left: 75%;
-        -ms-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);      
-      } 
-      #p-btn p .col-xs-3{
-        float: none;
-      }      
-    </style>
+    <script src="js/webSQL.js"></script>     
   </head>
   <body>
   <br>
@@ -68,43 +42,17 @@
     <div class="container" id="claves">               
       <div class="table-responsive">
        <form action="">
-        <table class="table table-hover">
+        <table id="tb-status" class="table table-hover">
+        <script type="text/javascript">
+          read();
+        </script>
             <tr class="active">
                 <th>Sitio</th>
                 <th>Usuario</th>
                 <th>Contraseña</th>
                 <th></th>
-            </tr>
-            <tr>
-                <td>https://www.facebook.com/</td>
-                <td>arturotg1607@hotmail.com</td>
-                <td>*************</td>
-                <td><label><input type="checkbox" name=""id=""</label></td>
-            </tr>
-            <tr>
-                <td>https://www.youtube.com/</td>
-                <td>arturotg1607@hotmail.com</td>
-                <td>*************</td>
-                <td><label><input type="checkbox" name=""id=""</label></td>
-            </tr>
-            <tr>
-                <td>https://outlook.live.com/owa/?mkt=es-es=/mail/inbox</td>
-                <td>arturotg1607@hotmail.com</td>
-                <td>*************</td>
-                <td><label><input type="checkbox" name=""id=""</label></td>
-            </tr>
-            <tr>
-                <td>https://outlook.live.com/owa/?mkt=es-es=/mail/inbox</td>
-                <td>arturotg1607@hotmail.com</td>
-                <td>*************</td>
-                <td><label><input type="checkbox" name=""id=""</label></td>
-            </tr>
-            <tr>
-                <td>https://www.netflix.com/</td>
-                <td>arturotg1607@hotmail.com</td>
-                <td>*************</td>
-                <td><label><input type="checkbox" name=""id=""</label></td>
-            </tr>                      
+            </tr>            
+
         </table>
         </form>
       </div>
@@ -118,8 +66,8 @@
           </p> 
         </div>        
       </footer>
-    </div>           
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    </div>
+    <script src="js/jQuery.js"></script>
+    <script src="js/bootstrap.min.js"></script>    
   </body>
 </html>

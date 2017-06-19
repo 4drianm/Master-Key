@@ -38,35 +38,37 @@
           </div>
         </nav>
       </header>
-    </div>    
+    </div>      
     <div class="container" id="claves">               
-      <div class="table-responsive">
+      <div class="table-responsive">      
        <form action="">
         <table id="tb-status" class="table table-hover">
         <script type="text/javascript">
           read();
         </script>
-            <tr class="active">
-                <th>Sitio</th>
-                <th>Usuario</th>
-                <th>Contraseña</th>
-                <th></th>
-            </tr>            
+          <tr class="active">
+            <th>Sitio</th>
+            <th>Usuario</th>
+            <th>Contraseña</th>
+            <th></th>
+          </tr>            
 
-        </table>
-        </form>
+
+        </table>        
       </div>
     </div>
     <div class="container">
       <footer>
         <div id="p-btn">
           <p>
-           <button class="btn btn-danger col-xs-3 col-sm-3 col-md-3 col-md-2"><span class="glyphicon glyphicon-trash"></span></button>
+           <button onclick="sup()" type"submit" class="btn btn-danger col-xs-3 col-sm-3 col-md-3 col-md-2"><span class="glyphicon glyphicon-trash"></span></button>
+      </form>     
            <a href="agregar.html"><button class="btn btn-primary btn-md col-xs-3 col-sm-3 col-md-3 col-md-2"><span class="glyphicon glyphicon-plus"></span></button></a>        
           </p> 
         </div>        
       </footer>
     </div>
+    <button class="btn" onclick="clean()" type"submit"></span>Clear-DB</button></a>
     <script src="js/jQuery.js"></script>
     <script src="js/bootstrap.min.js"></script>    
   </body>

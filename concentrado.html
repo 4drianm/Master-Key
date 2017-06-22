@@ -10,50 +10,35 @@
     <script src="js/webSQL.js"></script>     
   </head>
   <body>
-  <br>
+    <br>
     <div class="container">
-      <header>
-        <nav class="navbar navbar-default navbar-fixed">
-          <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-1">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a href="" class="navbar-brand">MASTER KEY</a>
-            </div>
-            <div class="collapsed navbar-collapse" id="navbar-1">
-              <ul class="nav navbar-nav navbar-right">
-                <li><form action="" class="navbar-form navbar-rigth" role="search">
-                <div class="form-group">
-                  <div class="input-group">
-                    <label class="sr-only" for="search">Buscar:</label>
-                    <div class="input-group-addon"><span class="glyphicon glyphicon-search"></span></div>
-                    <input class="form-control" id="search" type="text" placeholder="Buscar:">
-                   </div>
-                </form></li>
-              </ul>
-            </div>
+      <header class="navbar navbar-default navbar-fixed">
+        <div class="navbar-header">
+        <a href="concentrado.html" class="navbar-brand">MASTER KEY</a>
+          <div class="input-group col-sm-2">
+            <input type="text" class="form-control" placeholder="Search">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button">
+                <span class="glyphicon glyphicon-search"></span>
+              </button>
+            </span>
           </div>
-        </nav>
+        </div>
       </header>
     </div>      
     <div class="container" id="claves">               
       <div class="table-responsive">      
        <form action="">
-        <table id="tb-status" class="table table-hover">
-        <script type="text/javascript">
-          read();
-        </script>
+        <table id="tb-status" class="table table-hover">        
           <tr class="active">
             <th>Sitio</th>
             <th>Usuario</th>
             <th>Contraseña</th>
             <th></th>
           </tr>            
-
-
+          <script type="text/javascript">
+            read();
+          </script>
         </table>        
       </div>
     </div>

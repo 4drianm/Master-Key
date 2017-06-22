@@ -6,25 +6,24 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/index.css">
+    <script src="js/key-gen.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Bubbler+One" rel="stylesheet">
          
   </head>
   <body>
     <br>
     <div class="container">
-           <br>
-           <header>
-               <nav class="navbar navbar-default navbar-fixed">
-                   <div class="container-fluid">
-                       <div class="navbar-header">
-                           <a href="concentrado.html" class="navbar-brand">MASTER KEY</a>
-                       </div>
-                   </div>
-               </nav>
-           </header>
-       </div>
+      <header>
+        <nav class="navbar navbar-default navbar-fixed">
+           <div class="container-fluid">
+              <div class="navbar-header">
+                <a href="concentrado.html" class="navbar-brand">MASTER KEY</a>
+              </div>
+           </div>
+        </nav>
+      </header>
+    </div>
      <div class="container">
-     <br>
       <form id="sendDatos">
        <div class="form-group">
             <label>Usuario:</label>
@@ -34,14 +33,14 @@
             <label>Sitio:</label>
             <input class="form-control" id="sitio" type="text" placeholder="https://" required>
         </div>        
-        <div class="form-group">
-          <label>Contraseña:</label>
-          <input type="text" class="form-control" id="contraseña" required>
+        <div id="pass" class="form-group">
+          <script type="text/javascript">
+            generar(12);
+          </script>
         </div>        
     <br>  
-    <div id="p-btn">
-      <p>
-        <button class="btn btn-primary col-xs-3 col-sm-3 col-md-3 col-md-2">Generar Contraseña</button>
+    <div id="btn-A">
+      <p>        
         <button onclick="add()" type"submit" id="btn-D" class="btn btn-success col-xs-3 col-sm-3 col-md-3 col-md-2"><span class="glyphicon glyphicon-floppy-disk"></span></button>
       </p> 
     </div> 

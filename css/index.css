@@ -18,6 +18,14 @@ h1{
   left: 75%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);      
+}
+#btn-A p{
+  margin-top: 25px;
+  position: absolute;
+  width: 100%;
+  left: 90%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 } 
 #p-btn p .col-xs-3{
   float: none;
@@ -28,13 +36,31 @@ footer {
   height: 50px;
   position: static;      
 }
-@media (min-width: 370px){
-        .col-sm-2{padding-right: 0;}      
-        .input-group[class*=col-]{
-        padding-left: 70%;
-        width: auto;
-        }
-      }     
+@media (min-width: 380px) {
+  .input-group[class*=col-]{
+  padding-left: 20%;
+  padding-top: 8px;
+  margin-right: 8px;
+  width: auto;
+  }       
+}
+@media (min-width: 540px){
+  .col-sm-2{padding-right: 0;}      
+  .input-group[class*=col-]{
+  padding-left: 40%;
+  padding-top: 8px;
+  margin-right: 8px;
+  width: auto;
+  }
+}  
+@media (min-width: 992px) {
+  .input-group[class*=col-]{
+  padding-left: 55%;
+  padding-top: 8px;
+  margin-right: 8px;
+  width: auto;
+  }       
+}     
       
       
      

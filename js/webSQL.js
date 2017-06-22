@@ -45,7 +45,7 @@ function clean () {
 }
 function sup () {
   db.transaction( function(tx) {
-  tx.executeSql('DELETE FROM Datos WHERE usuario=?;', [Adrian], function (tx, error) {
+  tx.executeSql('DELETE FROM Datos WHERE usuario=?', ["Adrian"], function (tx, error) {
     console.log('error borrar: ' + error.message)    
   });
   });

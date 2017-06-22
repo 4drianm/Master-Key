@@ -18,7 +18,11 @@ function add () {
     var Sitio = document.getElementById('sitio').value
     var Contraseña = document.getElementById('contraseña').value
     tx.executeSql('INSERT INTO Datos(usuario, sitio, contraseña) VALUES(?,?,?)',[Usuario,Sitio,Contraseña])
+    added();
   })
+}
+function added () {
+  location.href = "concentrado.html";
 }
 
 function read () {
@@ -29,7 +33,7 @@ function read () {
         var row = result.rows.item(i);
         var msg =  '<tr><td>' + row.sitio + "</td>" + "<td>" + row.usuario + "</td>" +
                    "<td>" + row.contraseña + "</td>" +
-                   `<td><label><input type="checkbox" id="del-check"</label></td></tr>` ;
+                   `<td><label><input type="checkbox" class="del-check"</label></td></tr>` ;
         document.getElementById('tb-status').innerHTML += msg;
       /*console.log(row.sitio); 
         console.log(row.usuario); 
@@ -50,3 +54,33 @@ function sup () {
   });
   });
 }
+function s () {
+  
+}
+function buscar(){
+      var tableReg = document.getElementById('tb-status')
+      var searchText = document.getElementById('search').value.toLowerCase()
+      var cellsOfRow=""
+      var found=false
+      var compareWith=""
+
+      for (var i = 1; i < tableReg.rows.length; i++){
+
+        cellsOfRow = tableReg.rows[i].getElementsByTagName('td')
+        found = false;
+
+        for (var j = 0; j < cellsOfRow.length && !found; j++){
+
+          compareWith = cellsOfRow[j].innerHTML.toLowerCase()
+
+          if (searchText.length == 0 || (compareWith.indexOf(searchText) > -1)){
+            found = true;
+          }
+        }
+        if(found){
+          tableReg.rows[i].style.display = ''
+        } else {
+          tableReg.rows[i].style.display = 'none'
+        }
+      }
+    }

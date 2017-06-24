@@ -2,14 +2,17 @@ var db = null;
 LoadDB();
 
 function LoadDB () {
-  db = openDatabase('DB', '0.1', 'no descrption', 5 * 1024 * 1024);
+  db = openDatabase('DBS', '0.1', 'no descrption', 5 * 1024 * 1024);
   if(!db){
     console.log('error al crear db')
   }else{
     db.transaction(function (tx) {
-    tx.executeSql('CREATE TABLE IF NOT EXISTS Datos (usuario, sitio, contraseña)');
+    tx.executeSql('CREATE TABLE IF NOT EXISTS Datos (usuario, sitio, contraseña, unico)');
     });
   }
+}
+function added () {
+  location.href = "concentrado.html";
 }
 
 function add () {
@@ -17,14 +20,11 @@ function add () {
     var Usuario = document.getElementById('usuario').value
     var Sitio = document.getElementById('sitio').value
     var Contraseña = document.getElementById('contraseña').value
-    tx.executeSql('INSERT INTO Datos(usuario, sitio, contraseña) VALUES(?,?,?)',[Usuario,Sitio,Contraseña])
+    var identificador = Usuario.substr(0,3) + Sitio.substr(0,3) + Contraseña.substr(0,3);
+    tx.executeSql('INSERT INTO Datos(usuario, sitio, contraseña, unico) VALUES(?,?,?,?)',[Usuario,Sitio,Contraseña,identificador])
     added();
   })
 }
-function added () {
-  location.href = "concentrado.html";
-}
-
 function read () {
   db.readTransaction( function(tx) {
     tx.executeSql('Select * from Datos;', [], function(transaction, result){
@@ -32,30 +32,21 @@ function read () {
       for (var i=0; i < result.rows.length; i++) { 
         var row = result.rows.item(i);
         var msg =  '<tr><td>' + row.sitio + "</td>" + "<td>" + row.usuario + "</td>" +
-                   "<td>" + row.contraseña + "</td>" +
-                   `<td><label><input type="checkbox" class="del-check"</label></td></tr>` ;
-        document.getElementById('tb-status').innerHTML += msg;
-      /*console.log(row.sitio); 
-        console.log(row.usuario); 
-        console.log(row.contraseña);*/ 
+                   `<td>` + row.contraseña + "</td>" +
+                   `<td>` +
+                    `<button onclick="s(this)" type"submit" id="`+row.unico+`" class="btn btn-danger btn-T">` +
+                    `<span class="glyphicon glyphicon-trash"></span></button></td>` ;
+        document.getElementById('tb-status').innerHTML += msg;      
       } 
     }); 
   });
 }
-function clean () {
+
+function s (element) {
+  var e = element.id
   db.transaction( function(tx) {
-  tx.executeSql("DELETE FROM Datos", []);
+  tx.executeSql("DELETE FROM Datos WHERE unico=?", [e])
   });
-}
-function sup () {
-  db.transaction( function(tx) {
-  tx.executeSql('DELETE FROM Datos WHERE usuario=?', ["Adrian"], function (tx, error) {
-    console.log('error borrar: ' + error.message)    
-  });
-  });
-}
-function s () {
-  
 }
 function buscar(){
       var tableReg = document.getElementById('tb-status')

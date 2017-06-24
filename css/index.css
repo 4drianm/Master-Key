@@ -7,18 +7,6 @@ h1{
   max-height: 5000px;
   overflow: scroll;
 }      
-#p-btn{
-  height: 50px;
-  position: relative;
-}
-#p-btn p {
-  margin-top: 25px;
-  position: absolute;
-  width: 100%;
-  left: 75%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);      
-}
 #btn-A p{
   margin-top: 25px;
   position: absolute;
@@ -27,9 +15,22 @@ h1{
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 } 
-#p-btn p .col-xs-3{
-  float: none;
+.td-w{
+  width: 76px;
 }
+.btn-T{
+  padding: 4px 8px;
+  font-size: 10px;
+  opacity: 0.2;
+}
+.btn-C{
+  padding: 4px 8px;
+  font-size: 10px;
+}
+.btn-T:hover{
+  opacity: 1;
+}
+
 footer {
   background-color: #f1f1f1;
   margin-bottom: -1px;
@@ -49,6 +50,9 @@ footer {
   .container{
     width: auto;
   }
+  .td-p{
+  width: 120px;
+}
   #masterk-log{
     width: 340px;
     height: 540px;
@@ -69,6 +73,9 @@ footer {
   .container{
     width: auto;
   }
+  .td-p{
+  width: 150px;
+}
   #masterk-log{
   width: 400px;
   height: 580px;
@@ -84,6 +91,9 @@ footer {
     .container{
       width: auto;
     }
+    .td-p{
+    width: auto;
+}
   }  
 @media (min-width: 992px) {
   .input-group[class*=col-]{
@@ -95,11 +105,11 @@ footer {
   .container{
     width: auto;
   }
-  #p-btn p {
+  #btn-A p {
   margin-top: 25px;
   position: absolute;
   width: 100%;
-  left: 83%;
+  left: 92%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);      
 }       

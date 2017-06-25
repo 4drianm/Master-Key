@@ -39,7 +39,7 @@ function read () {
         var msg =  '<tr><td>' + row.sitio + "</td>" + "<td>" + row.usuario + "</td>" +
                    `<td>` + dec + "</td>" +
                    `<td>` +
-                    `<button onclick="s(this)" type"submit" id="`+row.unico+`" class="btn btn-danger btn-T">` +
+                    `<button onclick="sup(this)" type"submit" id="`+row.unico+`" class="btn btn-danger btn-T">` +
                     `<span class="glyphicon glyphicon-trash"></span></button></td>` ;
         document.getElementById('tb-status').innerHTML += msg;      
       } 

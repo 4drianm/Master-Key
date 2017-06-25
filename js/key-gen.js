@@ -1,7 +1,9 @@
+const crypto = require('crypto')
+
 function generar(longitud){
 
 	long=parseInt(longitud);
-	var caracteres = "abcdefghijkmnpqrtuvwxyzABCDEFGHIJKLMNPQRTUVWXYZ2346789!@#$¬&/(”)=-?‚¿¡^+"
+	var caracteres = "abcdefghijkmnpqrtuvwxyz12346789!@%#$'&/(”)=-_‚+ABCDEFGHIJKLMNPQRTUVWXYZ"
 	var contraseña = "";
 	for (i=0; i<long; i++) 
 		contraseña += caracteres.charAt(Math.floor(Math.random()*caracteres.length));	
@@ -13,4 +15,22 @@ function generar(longitud){
 
 function timeout () {
 	location.href = "index.html";
+}
+
+function encrypt(text, password){
+  var cipher = crypto.createCipher('aes-256-cbc', password)
+  var crypted = cipher.update(text,'utf8','hex')
+  crypted += cipher.final('hex');
+  return crypted;
+}
+function decrypt(text, password){
+  var decipher = crypto.createDecipher('aes-256-cbc', password)
+  var dec = decipher.update(text,'hex','utf8')
+  dec += decipher.final('utf8');
+  return dec;
+}
+
+module.exports = {
+	encrypt,
+	decrypt
 }

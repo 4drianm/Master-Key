@@ -1,4 +1,5 @@
 var db = null;
+var secret = 'contraseña-segura';
 LoadDB();
 
 function LoadDB () {
@@ -20,8 +21,10 @@ function add () {
     var Usuario = document.getElementById('usuario').value
     var Sitio = document.getElementById('sitio').value
     var Contraseña = document.getElementById('contraseña').value
-    var identificador = Usuario.substr(0,3) + Sitio.substr(0,3) + Contraseña.substr(0,3);
-    tx.executeSql('INSERT INTO Datos(usuario, sitio, contraseña, unico) VALUES(?,?,?,?)',[Usuario,Sitio,Contraseña,identificador])
+    var identificador = Usuario.substr(0,1) + Sitio.substr(0,1) + Contraseña.substr(0,10);
+    cif = encrypt(Contraseña, secret);
+    console.log(cif)
+    tx.executeSql('INSERT INTO Datos(usuario, sitio, contraseña, unico) VALUES(?,?,?,?)',[Usuario,Sitio,cif,identificador])
     added();
   })
 }
@@ -31,8 +34,10 @@ function read () {
     
       for (var i=0; i < result.rows.length; i++) { 
         var row = result.rows.item(i);
+        var dec = decrypt(row.contraseña, secret)
+        console.log(dec)
         var msg =  '<tr><td>' + row.sitio + "</td>" + "<td>" + row.usuario + "</td>" +
-                   `<td>` + row.contraseña + "</td>" +
+                   `<td>` + dec + "</td>" +
                    `<td>` +
                     `<button onclick="s(this)" type"submit" id="`+row.unico+`" class="btn btn-danger btn-T">` +
                     `<span class="glyphicon glyphicon-trash"></span></button></td>` ;
@@ -42,7 +47,7 @@ function read () {
   });
 }
 
-function s (element) {
+function sup (element) {
   var e = element.id
   db.transaction( function(tx) {
   tx.executeSql("DELETE FROM Datos WHERE unico=?", [e])

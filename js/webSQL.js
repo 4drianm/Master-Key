@@ -3,31 +3,109 @@ var secret = 'contraseña-segura';
 LoadDB();
 
 function LoadDB () {
-  db = openDatabase('DBS', '0.1', 'no descrption', 5 * 1024 * 1024);
+  db = openDatabase('MK', '0.1', 'no descrption', 5 * 1024 * 1024);
   if(!db){
     console.log('error al crear db')
   }else{
     db.transaction(function (tx) {
     tx.executeSql('CREATE TABLE IF NOT EXISTS Datos (usuario, sitio, contraseña, unico)');
+    tx.executeSql('CREATE TABLE IF NOT EXISTS User (usr, pass)');
+    tx.executeSql('CREATE TABLE IF NOT EXISTS Up (fecha,id)');
     });
   }
 }
+
+function re_cif(){
+  const async = require('async')
+  const waterfall = require('async/waterfall')
+
+  let oldk = localStorage.getItem('key')  
+  localStorage.removeItem('key')  
+  let newk = localStorage.getItem('key')
+  console.log(oldk)
+  console.log(newk)
+
+  db.transaction( function(tx) {
+// Falta arreglar la actualización de BD ////
+  async.waterfall([
+    function(callback){          
+      tx.executeSql('Select * from Datos;', [], function(trans, result){
+        for (var i=0; i < result.rows.length; i++) {        
+          var row = result.rows.item(i)
+          var U = row.unico
+          var dec = decrypt(row.contraseña, oldk)
+          var cif = encrypt(dec, newk)
+          callback(null, U, cif)              
+        }          
+      })
+    }, 
+    function(U,cif, callback){
+      tx.executeSql('UPDATE Datos SET contraseña=? WHERE unico=?', [cif , U]);        
+    }  
+  ])
+  })
+/////////////////////////////////////////////  
+}
+
+function ck_time(){
+  db.readTransaction( function(tx) {
+    tx.executeSql('Select * from Up;', [], function(transaction, result){
+      const d = result.rows.item(0)     
+      if (d.fecha < moment().unix()){
+        console.log('expirado')
+        var f = moment().add(2, 'm').unix()
+        db.transaction(function (tx) {
+        tx.executeSql('UPDATE Up SET fecha=? WHERE id=?', [f , '1']);
+        })
+        //setTimeout(function(){ re_cif() }, 1000);        
+      }
+    }) 
+  })
+}
+
+function reg_time () {
+  db.readTransaction( function(tx) {
+    tx.executeSql('Select * from Up;', [], function(transaction, result){
+      var d = result.rows.length
+      if (d == 0){      
+        db.transaction(function (tx) {
+        var Fecha = moment().add(2, 'm').unix()
+        tx.executeSql('INSERT INTO Up(fecha, id) VALUES(?,?)',[Fecha, '1'])        
+        })
+      }
+    }) 
+  })
+}
+
 function added () {
   location.href = "concentrado.html";
 }
-
+function Uadded () {
+  location.href = "index.html";
+}
+function hide(){
+  document.getElementById('tooltiptext').style.visibility = "hidden";
+}
+function valPass (v1, v2) {
+  if (v1.value != v2.value ){
+    document.getElementById('tooltiptext').style.visibility = "visible";
+  } else{
+    add_usr();
+  }
+}
 function add () {
   db.transaction(function (tx) {
     var Usuario = document.getElementById('usuario').value
     var Sitio = document.getElementById('sitio').value
     var Contraseña = document.getElementById('contraseña').value
-    var identificador = Usuario.substr(0,1) + Sitio.substr(0,1) + Contraseña.substr(0,10);
+    var identificador = Usuario.substr(0,3) + Sitio.substr(0,3) + Contraseña.substr(0,10);
     cif = encrypt(Contraseña, secret);
     console.log(cif)
     tx.executeSql('INSERT INTO Datos(usuario, sitio, contraseña, unico) VALUES(?,?,?,?)',[Usuario,Sitio,cif,identificador])
     added();
   })
 }
+
 function read () {
   db.readTransaction( function(tx) {
     tx.executeSql('Select * from Datos;', [], function(transaction, result){
@@ -36,11 +114,11 @@ function read () {
         var row = result.rows.item(i);
         var dec = decrypt(row.contraseña, secret)
         console.log(dec)
-        var msg =  '<tr><td>' + row.sitio + "</td>" + "<td>" + row.usuario + "</td>" +
-                   `<td>` + dec + "</td>" +
+        var msg =  '<tr><td>' + row.sitio + "</td>" + `<td>` + row.usuario + "</td>" +
+                   `<td class="t-p"> <img src='css/dot.png'> <div class="overlay"><span class="text">`+dec+"</span></div></td>" +
                    `<td>` +
-                    `<button onclick="s(this)" type"submit" id="`+row.unico+`" class="btn btn-danger btn-T">` +
-                    `<span class="glyphicon glyphicon-trash"></span></button></td>` ;
+                    `<button onclick="sup(this)" type"submit" id="`+row.unico+`" class="btn btn-danger btn-T">` +
+                    `<span class="glyphicon glyphicon-trash"></span></button></td></tr>` ;
         document.getElementById('tb-status').innerHTML += msg;      
       } 
     }); 

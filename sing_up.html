@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Master Key</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/webSQL.js"></script>
+    <script src="js/key-gen.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Bubbler+One" rel="stylesheet">
+    <style>
+      h1{
+      font-family: 'Bubbler One', sans-serif;
+      font-size: 25px;
+      color: black;
+      }
+      img {
+      width: 90px;
+      }
+    </style>
+  </head>
+   <body>
+   <br>
+   <br>
+   <div id="masterk-log">
+   <center>
+      <img src="css/MK.png">      
+    <header>
+      <h1>MASTER KEY</h1>
+    </header>
+  </center>
+    <br>
+    <br>
+    <div class="container">
+    <br>
+    <form name="Usr-form">
+       <div class="form-group">
+        <label for="usr">Usuario:</label>
+        <input class="form-control" id="usr" type="email" placeholder="email">
+       </div>
+       <div class="form-group" id="tooltip">
+        <span id="tooltiptext">Las contraseñas no son iguales</span>
+        <label for="pass">Contraseña:</label>
+        <input class="form-control" id="pass" type="password" onclick="hide()" placeholder="contraseña">
+        <label for="pass1"></label>
+        <input class="form-control" id="pass1" type="password" onclick="hide()" placeholder="repite tu contraseña">
+       </div>        
+    </form>
+    </div>
+  </div>
+  <div id="btn-A">     
+    <button onclick="valPass(pass, pass1)" type"submit" class="btn btn-primary col-xs-4 col-sm-4 col-md-3">Enviar</button>
+  </div>  
+  <script src="js/jquery.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

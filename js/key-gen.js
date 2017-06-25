@@ -1,4 +1,6 @@
 const crypto = require('crypto')
+const moment = require('moment')
+const hash = crypto.createHash('sha256')
 
 function generar(longitud){
 
@@ -16,7 +18,16 @@ function generar(longitud){
 function timeout () {
 	location.href = "index.html";
 }
-
+function add_usr () {
+  db.transaction(function (tx){
+    var U = document.getElementById('usr').value
+    var P = document.getElementById('pass').value
+    hash.update(P)
+    var H = hash.digest('hex')
+    tx.executeSql('INSERT INTO User(usr, pass) VALUES(?,?)',[U,H])
+    Uadded();
+  })
+}
 function encrypt(text, password){
   var cipher = crypto.createCipher('aes-256-cbc', password)
   var crypted = cipher.update(text,'utf8','hex')

@@ -4,21 +4,20 @@
     <meta charset="UTF-8">
     <title>Master Key</title>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bubbler+One">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/index.css">     
-    <link href="https://fonts.googleapis.com/css?family=Bubbler+One" rel="stylesheet">
     <script src="js/key-gen.js"></script>
     <script src="js/webSQL.js"></script>    
-    <script src="js/jQuery.js"></script>     
+    <link rel="stylesheet" href="css/index.css">     
   </head>
   <body>
     <br>
     <div class="container">
-      <header class="navbar navbar-default navbar-fixed">
+      <header class="navbar navbar-fixed">
         <div class="navbar-header">
         <a href="concentrado.html" class="navbar-brand">MASTER KEY</a>
           <div class="input-group col-sm-2">
-            <input type="text" class="form-control" id="search" placeholder="Buscar" onkeyup="buscar()">
+            <input type="text" class="form-control" id="search" placeholder="Buscar" onkeyup="buscar()" data-toggle="tooltip" data-placement="bottom" title="Pegar Ctrl+V">
             <span class="input-group-btn">
               <button class="btn btn-default" type="button">
                 <span class="glyphicon glyphicon-search"></span>
@@ -39,21 +38,19 @@
             <th class="td-w"></th>
           </tr>            
           <script type="text/javascript">
-            read();        
-            setInterval(function(){ timeout() }, 30000);
+            read();
+            reg_time();
+            setTimeout(function(){ ck_time() }, 1000);        
+            setInterval(function(){ timeout() }, 300000);
           </script>
         </table>
        </form>         
       </div>
     </div>
     <div class="container">
-      <footer>
-        <div id="btn-A">
-          <p>          
-           <a href="agregar.html"><button class="btn btn-primary col-xs-3 col-sm-3 col-md-3 col-md-2"><span class="glyphicon glyphicon-plus"></span></button></a>        
-          </p> 
+        <div id="btn-A">          
+           <a href="agregar.html"><button class="btn btn-primary col-xs-4 col-sm-4 col-md-3"><span class="glyphicon glyphicon-plus"></span></button></a>         
         </div>        
-      </footer>
     </div>
     <script src="js/bootstrap.min.js"></script>    
   </body>

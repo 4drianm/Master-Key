@@ -9,6 +9,7 @@
   "author": "Team1",
   "license": "MIT",
   "dependencies": {
+    "auth0-js": "^8.8.0",
     "electron": "^1.6.11"
   }
 }

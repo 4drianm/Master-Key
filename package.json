@@ -4,11 +4,17 @@
   "description": "Generador de contraseñas. App hecha con Electron.",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "package": "asar pack MasterKey-darwin-x64/MasterKey.app/Contents/Resources/app MasterKey-darwin-x64/MasterKey.app/Contents/Resources/app.asar && rm -rf MasterKey-darwin-x64/MasterKey.app/Contents/Resources/app",
+    "build": "electron-packager . MasterKey && cp MK-C.icns MasterKey-darwin-x64/MasterKey.app/Contents/Resources/electron.icns"
   },
   "author": "Team1",
   "license": "MIT",
   "dependencies": {
     "electron": "^1.6.11"
+  },
+  "devDependencies": {
+    "asar": "^0.13.0",
+    "electron-packager": "^8.7.2"
   }
 }

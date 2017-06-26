@@ -13,3 +13,9 @@ npm install
 # Iniciar app
 npm start
 ```
+## Empaquetar app
+```sh
+npm run build
+
+npm run package
+```

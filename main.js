@@ -13,7 +13,6 @@ function createWindow () {
     protocol: 'file:',
     slashes: true
   }))
-  mainWindow.webContents.openDevTools()
 
   mainWindow.on('closed', function () {    
     mainWindow = null

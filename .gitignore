@@ -58,5 +58,6 @@ typings/
 .env
 
 #build of electron
-MasterKey-darwin-x64/
+release-builds/*
+!release-builds/.gitkeep
 

@@ -15,7 +15,12 @@ npm start
 ```
 ## Empaquetar app
 ```sh
-npm run build
+# Mac os
+npm run package-mac
 
-npm run package
+# Linux
+npm run package-linux
+
+# Windows
+npm run package-win
 ```

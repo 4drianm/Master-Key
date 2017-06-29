@@ -10,10 +10,10 @@ function createWindow () {
   mainWindow = new BrowserWindow({
     width: 700, 
     height: 620,
-    minWidth: 700, 
-    minHeight: 620,
-    icon: path.join(__dirname, 'icons/MK-C.png')
+    resizable: false
   })
+  mainWindow.webContents.openDevTools()
+  
   mainWindow.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),
     protocol: 'file:',

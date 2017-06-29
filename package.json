@@ -6,16 +6,44 @@
   "scripts": {
     "start": "electron .",
     "package-mac": "electron-packager . --overwrite --asar=true --platform=darwin --arch=x64 --icon=icons/MK-C.icns --prune=true --out=release-builds",
-    "package-linux" : "electron-packager . --overwrite --asar=true --platform=linux --arch=x64 --icon=icons/MK-C.png --prune=true --out=release-builds",
-    "package-win": "electron-packager . --overwrite --asar=true --platform=win32 --arch=ia32 --icon=icons/MK-C.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Master Key App\""
+    "package-linux": "electron-packager . --overwrite --asar=true --platform=linux --arch=x64 --icon=icons/MK-C.png --prune=true --out=release-builds",
+    "package-win": "electron-packager . --overwrite --asar=true --platform=win32 --arch=ia32 --icon=icons/MK-C.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Master Key App\"",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "build": {
+    "appId": "com.team1.MK",    
+    "dmg": {
+      "contents": [
+        {
+          "x": 110,
+          "y": 150
+        },
+        {
+          "x": 240,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    },
+    "win": {
+      "target": "NSIS",
+      "icon": "icons/icon.ico"
+    }
   },
   "author": "Team1",
   "license": "MIT",
-  "dependencies": {
-    "electron": "^1.6.11"
-  },
   "devDependencies": {
     "asar": "^0.13.0",
+    "electron": "^1.6.11",    
+    "electron-builder": "^19.8.0",
     "electron-packager": "^8.7.2"
   }
 }

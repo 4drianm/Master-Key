@@ -5,18 +5,19 @@ h1{
 img {
   width: 160px;
 }
+table{
+  border-collapse:initial;
+}
+
 #claves{
   min-height: 450px;
-  max-height: 5000px;
-  overflow: scroll;
+  max-height: 450px;
+  overflow: overlay;
 }      
-#btn-A p{
+#btn-A{
+  padding-top: 8px;
   margin-top: 25px;
-  position: absolute;
-  width: 100%;
-  left: 88%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+  margin-left: 40%;
 } 
 .td-w{
   width: 76px;
@@ -32,16 +33,37 @@ img {
   font-size: 10px;
   opacity: 0.5;
 }
-.btn-T:hover .btn-C:hover{
+.btn-T:hover{
   opacity: 1;
 }
-
-footer {
-  background-color: #f1f1f1;
-  margin-bottom: -1px;
-  height: 50px;
-  position: static;      
+.t-p{
+  position: relative;
 }
+td.t-p img{
+  width: 60%;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .1s ease;
+  background-color:#F3F3F3;
+}
+.t-p:hover .overlay {
+  opacity: 1;
+}
+.text {
+  color: black;
+  position: absolute;
+  top: 20%;
+  left: 3%;
+}
+
 @media (min-width: 380px) {
   .input-group[class*=col-]{
   padding-left: 20%;
@@ -88,7 +110,7 @@ footer {
   }
   #masterk{
   width: 600px;
-  height: 400px;
+  height: 314px;
   margin: auto;
   }
 }
@@ -97,8 +119,14 @@ footer {
       width: auto;
     }
     .td-p{
-    width: auto;
-}
+    width: 210px;
+    }
+    .col-sm-3{
+      width: auto;
+    }
+    .navbar-brand{
+    margin-left: 0;
+    }
   }  
 @media (min-width: 992px) {
   .input-group[class*=col-]{
@@ -107,20 +135,21 @@ footer {
   margin-right: 8px;
   width: auto;
   }
+  .td-p{
+    width: auto;
+    }
+    td.t-p img{
+    width: 20%;
+    }
   img {
   width: auto;
   }
   .container{
     width: auto;
   }
-  #btn-A p {
-  margin-top: 25px;
-  position: absolute;
-  width: 100%;
-  left: 92%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);      
-}       
+  #btn-A{
+  margin-left: 43%;
+}     
 }     
       
       

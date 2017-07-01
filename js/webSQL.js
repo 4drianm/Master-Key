@@ -37,10 +37,10 @@ function read () {
         var dec = decrypt(row.contraseña, secret)
         console.log(dec)
         var msg =  '<tr><td>' + row.sitio + "</td>" + "<td>" + row.usuario + "</td>" +
-                   `<td>` + dec + "</td>" +
+                   `<td class="t-p"> <img src='css/dot.png'> <div class="overlay"><span class="text">`+ dec +"</span></div></td>" +
                    `<td>` +
                     `<button onclick="sup(this)" type"submit" id="`+row.unico+`" class="btn btn-danger btn-T">` +
-                    `<span class="glyphicon glyphicon-trash"></span></button></td>` ;
+                    `<span class="glyphicon glyphicon-trash"></span></button></td></tr>` ;
         document.getElementById('tb-status').innerHTML += msg;      
       } 
     }); 

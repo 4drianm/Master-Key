@@ -1,13 +1,15 @@
 {
   "name": "MasterKey",
   "version": "0.0.1",
+  "author": "Team1 <team1@team.com>",
+  "license": "MIT",
   "description": "Generador de contraseñas. App hecha con Electron.",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "package-mac": "electron-packager . --overwrite --asar=true --platform=darwin --arch=x64 --icon=icons/MK-C.icns --prune=true --out=release-builds",
-    "package-linux": "electron-packager . --overwrite --asar=true --platform=linux --arch=x64 --icon=icons/MK-C.png --prune=true --out=release-builds",
-    "package-win": "electron-packager . --overwrite --asar=true --platform=win32 --arch=ia32 --icon=icons/MK-C.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Master Key App\"",
+    "package-mac": "electron-packager . --overwrite --asar=true --platform=darwin --arch=x64 --icon=build/icon.icns --prune=true --out=dist",
+    "package-linux": "electron-packager . --overwrite --asar=true --platform=linux --arch=x64 --prune=true --out=dist",
+    "package-win": "electron-packager . --overwrite --asar=true --platform=win32 --arch=x64 --icon=build/icon.ico --prune=true --out=dist --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Master Key App\"",
     "pack": "electron-builder --dir",
     "dist": "electron-builder"
   },
@@ -16,11 +18,11 @@
     "dmg": {
       "contents": [
         {
-          "x": 110,
+          "x": 150,
           "y": 150
         },
         {
-          "x": 240,
+          "x": 280,
           "y": 150,
           "type": "link",
           "path": "/Applications"
@@ -35,11 +37,9 @@
     },
     "win": {
       "target": "NSIS",
-      "icon": "icons/icon.ico"
+      "icon": "build/icon.ico"
     }
   },
-  "author": "Team1",
-  "license": "MIT",
   "devDependencies": {
     "asar": "^0.13.0",
     "electron": "^1.6.11",    

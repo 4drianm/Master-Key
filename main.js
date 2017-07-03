@@ -8,9 +8,9 @@ let mainWindow
 
 function createWindow () {
   mainWindow = new BrowserWindow({
-    width: 700, 
-    height: 645,
-    resizable: false
+    width: 600, 
+    height: 665,
+    //resizable: false
   })
   mainWindow.webContents.openDevTools()
   

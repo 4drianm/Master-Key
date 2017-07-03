@@ -3,7 +3,7 @@ h1{
   color: black;
 }
 img {
-  width: 160px;
+  width: 120px;
 }
 table{
   border-collapse:initial;
@@ -20,7 +20,7 @@ table{
   margin-left: 40%;
 } 
 .td-w{
-  width: 76px;
+  width: 50px;
 }
 .btn-T{
   padding: 4px 8px;
@@ -109,7 +109,8 @@ td.t-p img{
   margin: auto;
   }
   #masterk{
-  width: 600px;
+  min-width: 500px;
+  max-width: 650px;
   height: 314px;
   margin: auto;
   }

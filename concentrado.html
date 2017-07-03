@@ -18,7 +18,7 @@
         <div class="navbar-header">
         <a href="concentrado.html" class="navbar-brand">MASTER KEY</a>
           <div class="input-group col-sm-2">
-            <input type="text" class="form-control" id="search" placeholder="Buscar" onkeyup="buscar()">
+            <input type="text" class="form-control" id="search" placeholder="Buscar" onkeyup="buscar()" data-toggle="tooltip" data-placement="bottom" title="Pegar Ctrl+V">
             <span class="input-group-btn">
               <button class="btn btn-default" type="button">
                 <span class="glyphicon glyphicon-search"></span>
@@ -40,7 +40,7 @@
           </tr>            
           <script type="text/javascript">
             read();        
-            setInterval(function(){ timeout() }, 30000);
+            setInterval(function(){ timeout() }, 300000);
           </script>
         </table>
        </form>         

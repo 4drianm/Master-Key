@@ -27,6 +27,6 @@ npm run dist
 
 # Windows
 npm run package-win
-# Directamente en Windows, para crear un .???
+# Directamente en Windows, para crear un .exe
 npm run dist
 ```

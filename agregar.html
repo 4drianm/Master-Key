@@ -4,13 +4,11 @@
     <meta charset="UTF-8">
     <title>Master Key</title>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bubbler+One">
+    <script src="js/jquery.js"></script>
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/index.css">    
     <script src="js/key-gen.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Bubbler+One" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>         
   </head>
   <body>
     <br>
@@ -32,10 +30,10 @@
         </div>
         <div class="form-group">
             <label>Sitio:</label>
-            <input class="form-control" id="sitio" type="text" placeholder="https://" required data-toggle="tooltip" data-placement="bottom" title="Pegar Ctrl+V">
+            <input class="form-control" id="sitio" type="text" placeholder="sitio.com" required data-toggle="tooltip" data-placement="bottom" title="Pegar Ctrl+V">
         </div>        
         <div id="pass" class="form-group" data-toggle="tooltip" data-placement="bottom" title="Copiar Ctrl+C">
-        <input type="text" class="form-control" id="contraseña" value="contraseña">
+        <input type="text" class="form-control" id="contraseña">
           <script type="text/javascript">
             generar(12);
           </script>
@@ -50,15 +48,12 @@
     <br>
     <br>
     <script src="js/webSQL.js"></script>
-    <script src="js/jQuery.js"></script>    
     <script src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="jquery.js"></script>
     
    <script>
-    $(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();   
-    });
+    $("#pass").click(function(){
     $("#contraseña").select();
+    });
   </script>
   </body>
 </html>

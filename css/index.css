@@ -40,7 +40,7 @@ table{
   position: relative;
 }
 td.t-p img{
-  width: 60%;
+  width: 45%;
 }
 .overlay {
   position: absolute;
@@ -128,6 +128,9 @@ td.t-p img{
     .navbar-brand{
     margin-left: 0;
     }
+    td.t-p img{
+    width: 25%;
+    }
   }  
 @media (min-width: 992px) {
   .input-group[class*=col-]{
@@ -140,10 +143,10 @@ td.t-p img{
     width: auto;
     }
     td.t-p img{
-    width: 20%;
+    width: 15%;
     }
   img {
-  width: auto;
+  width: 190px;
   }
   .container{
     width: auto;

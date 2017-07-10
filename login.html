@@ -2,78 +2,51 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Master Key</title>
+    <title>Master Key | Login</title>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/index.css">
-    <script src="js/jquery.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Bubbler+One" rel="stylesheet">
-    <style>
-      .hidden {
-        display: none;
-      }
-      h3 {
-        margin-top: 0;
-      }
-      label {
-        margin: 5px 0;
-        color: #777;
-      }
-    </style>
+    <script src="js/auth0-variables.js"></script> 
   </head>
 
   <body>
-   <div id="masterk-log">
-    
-      <div class="container">
-        <center>
-          <br>
-          <br>
-          <div class="container-fluid">
-              <div>
-                  <div class="col-lg-12">
-                      <img src="css/logo-c.svg" class="img-responsive">
-                  </div>
-              </div>
-          </div>
-          <header>
-              <h1>MASTER KEY</h1>
-          </header>
-
-          <div class="jumbotron" style="margin-top: 15px;">
-            <h1>Bienvenido</h1>
-            
-            <button class="btn btn-primary btn-login">Iniciar Sesión</button>
-            <button class="btn btn-primary btn-logout">Cerrar Sesión</button>
-            <button class="btn btn-primary btn-home">Home</button>
-
-          </div>
-          <div class="profile">
-            <div>
-              <img class="avatar" style="width: 75px;border-radius:50%">
-            </div>
-            <div class="profile-section hidden">
-              <label for="">Username</label>
-              <h3 class="name"></h3>
-              <label for="">Email</label>
-              <h3 class="email"></h3>
-            </div>
-          </div>
-        </center>
-      </div>
-
-      <div class="#concentrado"></div>
-    </div>
-
-
   <script src="https://cdn.auth0.com/js/lock/10.14/lock.min.js"></script>
-  <script src="js/auth0-variables.js"></script>  
-  <script>
+   <br>
+   <br>
+   <p>hola</p>
+    <div id="masterk-log">
+      <script>
+        var options = {
+        theme: {
+          logo: 'css/logo-c.svg',
+          primaryColor: '#31324F'
+        },
+
+        auth: {
+          redirectUrl: 'http://localhost:3000/login',
+          sso: false
+        },
+
+        languageDictionary: {
+          title: 'Master-Key'
+        },
+
+        //container: 'masterk-log',
+        language: 'es',
+        allowedConnections: ['github', 'facebook', 'google-oauth2'],
+        rememberLastLogin: false,
+        scope: 'openid profile' 
+      };
+      
+      var lock = new Auth0Lock(AUTH0_CLIENT_ID, AUTH0_DOMAIN, options);
+      lock.show();
+
+      </script>
+
+    <!-- <script>
       $ = document.querySelector.bind(document);
 
       var options = {
         theme: {
-          logo: 'css/logo-c.svg',
+          logo: 'http://localhost:3000/logo',
           primaryColor: '#31324F'
         },
 
@@ -89,7 +62,8 @@
 
         language: 'es',
         allowedConnections: ['github', 'facebook', 'google-oauth2'],
-        rememberLastLogin: false 
+        rememberLastLogin: false,
+        scope: 'openid profile' 
       };
       
       var lock = new Auth0Lock(AUTH0_CLIENT_ID, AUTH0_DOMAIN, options);
@@ -108,12 +82,10 @@
         $('.profile-section').classList.remove('hidden');
         $('.btn-login').classList.add('hidden');
         $('.btn-logout').classList.remove('hidden');
-        $('.btn-home').classList.remove('hidden');
       } else {
         $('.profile-section').classList.add('hidden');
         $('.btn-login').classList.remove('hidden');
         $('.btn-logout').classList.add('hidden');
-        $('.btn-home').classList.add('hidden');
       }
       $('.btn-login').addEventListener('click', function() {
         lock.show();
@@ -130,8 +102,6 @@
           $('.email').textContent = profile.email;
           $('.btn-login').classList.add('hidden');
           $('.btn-logout').classList.remove('hidden');
-          $('.btn-home').classList.remove('hidden');
-          location.href = "concentrado.html";
         });
         lock.hide();
       });
@@ -144,17 +114,6 @@
           }
         });
       });
-
-      $('.btn-home').addEventListener('click', function() {
-        var idToken = localStorage.getItem('id_token') || null;
-        var profile = JSON.parse(localStorage.getItem('profile')) || null;
-        if (idToken && profile) {
-          $('.avatar').src = profile.picture;
-          $('.name').textContent = profile.nickname;
-          $('.email').textContent = profile.email;
-        }
-        location.href = "concentrado.html";
-      });
       
       $('.btn-logout').addEventListener('click', function() {
         localStorage.removeItem('profile');
@@ -165,8 +124,22 @@
         $('.email').textContent = null;
         $('.btn-login').classList.remove('hidden');
         $('.btn-logout').classList.add('hidden');
-        $('.btn-home').classList.add('hidden');
       });
+    </script>-->
+    </div>
+
+    <div id="topBar">
+        <a href ="#" id="load_concentrado"> HOME </a>
+    </div>
+    <div id ="content">        
+    </div>
+
+    <script>
+    $(document).ready( function() {
+        $("#load_home").on("click", function() {
+            $("#content").load("content.html");
+        });
+    });
     </script>
   </body>
 </html>

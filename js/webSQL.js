@@ -1,4 +1,5 @@
 var db = null;
+var profile = JSON.parse(localStorage.getItem('profile')) || null;
 var secret = 'contraseña-segura';
 LoadDB();
 

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="js/key-gen.js"></script>
     <script src="js/webSQL.js"></script>    
+    <script src="js/jquery.js"></script>    
     <link rel="stylesheet" href="css/index.css">     
   </head>
   <body>
@@ -15,7 +16,28 @@
     <div class="container">
       <header class="navbar navbar-fixed">
         <div class="navbar-header">
-        <a href="concentrado.html" class="navbar-brand">MASTER KEY</a>
+        <div class="profile">
+              <img class="avatar" style="width: 50px;border-radius:50%">
+              <h3 class="name">Username|</h3>
+              <button class="btn btn-primary btn-logout">Cerrar Sesión</button>
+        </div>
+        <script>
+          $ = document.querySelector.bind(document);
+          var idToken = localStorage.getItem('id_token') || null;
+          var profile = JSON.parse(localStorage.getItem('profile')) || null;
+          if (idToken && profile) {
+          $('.avatar').src = profile.picture;
+          $('.name').textContent = profile.nickname;
+
+          $('.btn-logout').addEventListener('click', function() {
+            localStorage.removeItem('profile');
+            localStorage.removeItem('id_token');
+            $('.avatar').src = '';
+            $('.name').textContent = null;
+            location.href = "index.html";
+          });
+        }
+        </script>
           <div class="input-group col-sm-2">
             <input type="text" class="form-control" id="search" placeholder="Buscar" onkeyup="buscar()" data-toggle="tooltip" data-placement="bottom" title="Pegar Ctrl+V">
             <span class="input-group-btn">
@@ -26,7 +48,9 @@
           </div>
         </div>
       </header>
-    </div>      
+    </div>   
+
+
     <div class="container" id="claves">               
       <div class="table-responsive">      
        <form action="">

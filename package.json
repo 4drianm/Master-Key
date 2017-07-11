@@ -10,7 +10,8 @@
     "package-mac": "electron-packager . --overwrite --asar=true --platform=darwin --arch=x64 --icon=build/icon.icns --prune=true --out=dist",
     "package-linux": "electron-packager . --overwrite --asar=true --platform=linux --arch=x64 --prune=true --out=dist",
     "package-win": "electron-packager . --overwrite --asar=true --platform=win32 --arch=x64 --icon=build/icon.ico --prune=true --out=dist --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Master Key App\"",
-    "pack": "electron-builder --dir",
+    "pack-w": "electron-builder --win",
+    "dist-all": "electron-builder -mwl",
     "dist": "electron-builder"
   },
   "build": {
@@ -36,11 +37,12 @@
       ]
     },
     "win": {
-      "target": "portable",
+      "target": "nsis",
       "icon": "build/icon.ico"
     }
   },
   "devDependencies": {
+    "7zip-bin-mac": "^1.0.1",
     "asar": "^0.13.0",
     "electron": "^1.6.11",
     "electron-builder": "^19.8.0",

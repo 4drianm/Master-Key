@@ -32,10 +32,10 @@
         </div>
         <div class="form-group">
             <label>Sitio:</label>
-            <input class="form-control" id="sitio" type="text" placeholder="https://" required data-toggle="tooltip" data-placement="bottom" title="Pegar Ctrl+V">
+            <input class="form-control" id="sitio" type="text" placeholder="sitio.com" required data-toggle="tooltip" data-placement="bottom" title="Pegar Ctrl+V">
         </div>        
         <div id="pass" class="form-group" data-toggle="tooltip" data-placement="bottom" title="Copiar Ctrl+C">
-        <input type="text" class="form-control" id="contraseña" value="contraseña">
+        <input type="text" class="form-control" id="contraseña">
           <script type="text/javascript">
             generar(12);
           </script>
@@ -49,13 +49,11 @@
     </div>  
     <br>
     <br>
-    <script src="js/webSQL.js"></script> 
-    
+    <script src="js/webSQL.js"></script>     
    <script>
-    $(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();   
-    });
+    $("#pass").click(function(){
     $("#contraseña").select();
+    });
   </script>
   </body>
 </html>

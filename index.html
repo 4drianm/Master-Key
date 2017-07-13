@@ -28,19 +28,6 @@
         <center>
           <br>
           <br>
-          <img src="css/logo-c.svg" class="img-responsive">
-          <header>
-              <h1>MASTER KEY</h1>
-          </header>
-
-          <div class="jumbotron" style="margin-top: 15px;">
-            <h1>Bienvenido</h1>
-            
-            <button class="btn btn-primary btn-login">Iniciar Sesión</button>
-            <button class="btn btn-primary btn-logout">Cerrar Sesión</button>
-            <button class="btn btn-primary btn-home">Home</button>
-
-          </div>
           <div class="profile">
             <div>
               <img class="avatar" style="width: 75px;border-radius:50%">
@@ -72,16 +59,15 @@
 
         auth: {
           redirect: false,
-          autoclose: true,
           sso: false
         },
 
         languageDictionary: {
           title: 'Master-Key'
         },
-
+        closable: false,
         language: 'es',
-        allowedConnections: ['github', 'facebook', 'google-oauth2'],
+        allowedConnections: ['facebook'],
         rememberLastLogin: false 
       };
       
@@ -99,19 +85,12 @@
         $('.name').textContent = profile.nickname;
         $('.email').textContent = profile.email;
         $('.profile-section').classList.remove('hidden');
-        $('.btn-login').classList.add('hidden');
-        $('.btn-logout').classList.remove('hidden');
-        $('.btn-home').classList.remove('hidden');
       } else {
         $('.profile-section').classList.add('hidden');
-        $('.btn-login').classList.remove('hidden');
-        $('.btn-logout').classList.add('hidden');
-        $('.btn-home').classList.add('hidden');
       }
-      $('.btn-login').addEventListener('click', function() {
-        lock.show();
-
-      });
+      window.onload= function (){
+      lock.show();
+      }
 
       lock.on('authenticated', (authResult) => {
         localStorage.setItem('id_token', authResult.idToken);
@@ -121,9 +100,7 @@
           $('.avatar').src = profile.picture;
           $('.name').textContent = profile.nickname;
           $('.email').textContent = profile.email;
-          $('.btn-login').classList.add('hidden');
-          $('.btn-logout').classList.remove('hidden');
-          $('.btn-home').classList.remove('hidden');
+
           location.href = "concentrado.html";
         });
         lock.hide();

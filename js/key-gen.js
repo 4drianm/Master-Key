@@ -14,6 +14,11 @@ function generar(longitud){
 }
 
 function timeout () {
+	$ = document.querySelector.bind(document);
+	localStorage.removeItem('profile');
+  localStorage.removeItem('id_token');
+  $('.avatar').src = '';
+  $('.name').textContent = null;
 	location.href = "index.html";
 }
 

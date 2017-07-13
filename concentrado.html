@@ -29,13 +29,6 @@
           $('.avatar').src = profile.picture;
           $('.name').textContent = profile.nickname;
 
-          $('.btn-logout').addEventListener('click', function() {
-            localStorage.removeItem('profile');
-            localStorage.removeItem('id_token');
-            $('.avatar').src = '';
-            $('.name').textContent = null;
-            location.href = "index.html";
-          });
         }
         </script>
           <div class="input-group col-sm-2">
@@ -63,7 +56,7 @@
           </tr>            
           <script type="text/javascript">
             read();        
-            setInterval(function(){ timeout() }, 300000);
+            setInterval(function(){ timeout() }, 30000);
           </script>
         </table>
        </form>         

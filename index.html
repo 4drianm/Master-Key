@@ -8,28 +8,14 @@
     <link rel="stylesheet" href="css/index.css">
     <script src="js/jquery.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Bubbler+One" rel="stylesheet">
-    <style>
-      .hidden {
-        display: none;
-      }
-      h3 {
-        margin-top: 0;
-      }
-      label {
-        margin: 5px 0;
-        color: #777;
-      }
-    </style>
   </head>
 
   <body>
-   <div id="masterk-log">
-      <div class="container">
         <center>
           <br>
           <br>
           <div class="profile">
-            <div>
+            <div class="hidden">
               <img class="avatar" style="width: 75px;border-radius:50%">
             </div>
             <div class="profile-section hidden">
@@ -40,11 +26,7 @@
             </div>
           </div>
         </center>
-      </div>
-
       <div class="#concentrado"></div>
-    </div>
-
 
   <script src="https://cdn.auth0.com/js/lock/10.14/lock.min.js"></script>
   <script src="js/auth0-variables.js"></script>  
@@ -63,7 +45,7 @@
         },
 
         languageDictionary: {
-          title: 'Master-Key'
+          title: 'Master Key'
         },
         closable: false,
         language: 'es',
@@ -84,7 +66,6 @@
         $('.avatar').src = profile.picture;
         $('.name').textContent = profile.nickname;
         $('.email').textContent = profile.email;
-        $('.profile-section').classList.remove('hidden');
       } else {
         $('.profile-section').classList.add('hidden');
       }
@@ -113,29 +94,6 @@
             text: error.error_description
           }
         });
-      });
-
-      $('.btn-home').addEventListener('click', function() {
-        var idToken = localStorage.getItem('id_token') || null;
-        var profile = JSON.parse(localStorage.getItem('profile')) || null;
-        if (idToken && profile) {
-          $('.avatar').src = profile.picture;
-          $('.name').textContent = profile.nickname;
-          $('.email').textContent = profile.email;
-        }
-        location.href = "concentrado.html";
-      });
-      
-      $('.btn-logout').addEventListener('click', function() {
-        localStorage.removeItem('profile');
-        localStorage.removeItem('id_token');
-        $('.profile-section').classList.add('hidden');
-        $('.avatar').src = '';
-        $('.name').textContent = null;
-        $('.email').textContent = null;
-        $('.btn-login').classList.remove('hidden');
-        $('.btn-logout').classList.add('hidden');
-        $('.btn-home').classList.add('hidden');
       });
     </script>
   </body>

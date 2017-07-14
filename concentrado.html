@@ -17,9 +17,8 @@
       <header class="navbar navbar-fixed">
         <div class="navbar-header">
         <div class="profile">
-              <img class="avatar" style="width: 50px;border-radius:50%">
-              <h3 class="name">Username|</h3>
-              <button class="btn btn-primary btn-logout">Cerrar Sesión</button>
+              <img class="avatar" style="width:50px;border-radius:60%">
+              <B><align="left" class="name">Username</B>    
         </div>
         <script>
           $ = document.querySelector.bind(document);
@@ -28,22 +27,19 @@
           if (idToken && profile) {
           $('.avatar').src = profile.picture;
           $('.name').textContent = profile.nickname;
-
         }
         </script>
-          <div class="input-group col-sm-2">
-            <input type="text" class="form-control" id="search" placeholder="Buscar" onkeyup="buscar()" data-toggle="tooltip" data-placement="bottom" title="Pegar Ctrl+V">
-            <span class="input-group-btn">
-              <button class="btn btn-default" type="button">
-                <span class="glyphicon glyphicon-search"></span>
-              </button>
-            </span>
-          </div>
+        <div class="input-group col-sm-2">
+          <input type="text" class="form-control" id="search" placeholder="Buscar" onkeyup="buscar()" data-toggle="tooltip" data-placement="bottom" title="Pegar Ctrl+V">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button">
+              <span class="glyphicon glyphicon-search"></span>
+            </button>
+          </span>
+        </div>
         </div>
       </header>
     </div>   
-
-
     <div class="container" id="claves">               
       <div class="table-responsive">      
        <form action="">

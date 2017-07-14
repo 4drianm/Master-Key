@@ -8,10 +8,19 @@ img {
 table{
   border-collapse:initial;
 }
-
+.hidden {
+  display: none;
+}
+h3 {
+  margin-top: 0;
+}
+label {
+  margin: 5px 0;
+  color: #777;
+}
 #claves{
-  min-height: 450px;
-  max-height: 450px;
+  min-height: 400px;
+  max-height: 400px;
   overflow: overlay;
 }      
 #btn-A{

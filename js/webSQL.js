@@ -1,6 +1,7 @@
 var db = null;
 var profile = JSON.parse(localStorage.getItem('profile')) || null;
-var secret = 'contraseña-segura';
+var secret = profile.clientID.substr(0,8) + '--' + profile.user_id.substr(9,19);
+console.log(secret)
 LoadDB();
 
 function LoadDB () {
@@ -24,7 +25,6 @@ function add () {
     var Contraseña = document.getElementById('contraseña').value
     var identificador = Usuario.substr(0,3) + Sitio.substr(0,3) + Contraseña.substr(0,10);
     cif = encrypt(Contraseña, secret);
-    console.log(cif)
     tx.executeSql('INSERT INTO Datos(usuario, sitio, contraseña, unico) VALUES(?,?,?,?)',[Usuario,Sitio,cif,identificador])
     added();
   })
@@ -36,7 +36,7 @@ function read () {
       for (var i=0; i < result.rows.length; i++) { 
         var row = result.rows.item(i);
         var dec = decrypt(row.contraseña, secret)
-        console.log(dec)
+
         var msg =  '<tr><td>' + row.sitio + "</td>" + `<td>` + row.usuario + "</td>" +
                    `<td class="t-p"> <img src='css/dot.png'> <div class="overlay"><span class="text">`+dec+"</span></div></td>" +
                    `<td>` +

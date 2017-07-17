@@ -7,13 +7,18 @@ const url = require('url')
 let mainWindow
 
 function createWindow () {
-  mainWindow = new BrowserWindow({width: 700, height: 600})
+  mainWindow = new BrowserWindow({
+    width: 550, 
+    height: 650,
+    resizable: false
+  })
+  mainWindow.webContents.openDevTools()
+  
   mainWindow.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),
     protocol: 'file:',
     slashes: true
   }))
-  mainWindow.webContents.openDevTools()
 
   mainWindow.on('closed', function () {    
     mainWindow = null

@@ -1,0 +1,169 @@
+h1{
+  font-family: 'Bubbler One', sans-serif;
+  color: black;
+}
+img {
+  width: 120px;
+}
+table{
+  border-collapse:initial;
+}
+.hidden {
+  display: none;
+}
+h3 {
+  margin-top: 0;
+}
+label {
+  margin: 5px 0;
+  color: #777;
+}
+#claves{
+  min-height: 400px;
+  max-height: 400px;
+  overflow: overlay;
+}      
+#btn-A{
+  padding-top: 8px;
+  margin-top: 25px;
+  margin-left: 40%;
+} 
+.td-w{
+  width: 50px;
+}
+.btn-T{
+  padding: 4px 8px;
+  font-size: 10px;
+  opacity: 0.2;
+}
+.btn-C{
+  padding: 4px 8px;
+  margin-right: 15px;
+  font-size: 10px;
+  opacity: 0.5;
+}
+.btn-T:hover{
+  opacity: 1;
+}
+.t-p{
+  position: relative;
+}
+td.t-p img{
+  width: 45%;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .1s ease;
+  background-color:#F3F3F3;
+}
+.t-p:hover .overlay {
+  opacity: 1;
+}
+.text {
+  color: black;
+  position: absolute;
+  top: 20%;
+  left: 3%;
+}
+
+@media (min-width: 380px) {
+  .input-group[class*=col-]{
+  padding-left: 20%;
+  padding-top: 8px;
+  margin-right: 8px;
+  width: auto;
+  }
+  .table{
+    margin-bottom: auto;
+  }
+  .container{
+    width: auto;
+  }
+  .td-p{
+  width: 120px;
+}
+  #masterk-log{
+    width: 340px;
+    height: 540px;
+    margin: auto;
+  }
+}
+@media (min-width: 540px){
+  .col-sm-2{padding-right: 0;}      
+  .input-group[class*=col-]{
+  padding-left: 40%;
+  padding-top: 8px;
+  margin-right: 8px;
+  width: auto;
+  }
+  .table{
+    margin-bottom: auto;
+  }
+  .container{
+    width: auto;
+  }
+  .td-p{
+  width: 150px;
+}
+  #masterk-log{
+  width: 400px;
+  height: 580px;
+  margin: auto;
+  }
+  #masterk{
+  min-width: 500px;
+  max-width: 650px;
+  height: 314px;
+  margin: auto;
+  }
+}
+@media (min-width: 768px) {
+    .container{
+      width: auto;
+    }
+    .td-p{
+    width: 210px;
+    }
+    .col-sm-3{
+      width: auto;
+    }
+    .navbar-brand{
+    margin-left: 0;
+    }
+    td.t-p img{
+    width: 25%;
+    }
+  }  
+@media (min-width: 992px) {
+  .input-group[class*=col-]{
+  padding-left: 55%;
+  padding-top: 8px;
+  margin-right: 8px;
+  width: auto;
+  }
+  .td-p{
+    width: auto;
+    }
+    td.t-p img{
+    width: 15%;
+    }
+  img {
+  width: 190px;
+  }
+  .container{
+    width: auto;
+  }
+  #btn-A{
+  margin-left: 43%;
+}     
+}     
+      
+      
+     

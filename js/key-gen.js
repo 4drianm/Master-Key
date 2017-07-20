@@ -17,6 +17,7 @@ function generar(longitud){
 
 function timeout () {
 	location.href = "index.html";
+  //localStorage.clear()
 }
 function add_usr () {
   db.transaction(function (tx){

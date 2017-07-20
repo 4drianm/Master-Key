@@ -1,5 +1,5 @@
 var db = null;
-var secret = 'contraseña-segura';
+var secret = localStorage.getItem('key');
 LoadDB();
 
 function LoadDB () {
@@ -18,33 +18,28 @@ function LoadDB () {
 function re_cif(){
   const async = require('async')
   const waterfall = require('async/waterfall')
-
   let oldk = localStorage.getItem('key')  
-  localStorage.removeItem('key')  
-  let newk = localStorage.getItem('key')
-  console.log(oldk)
-  console.log(newk)
+  //localStorage.removeItem('key')  
+  let newk = localStorage.getItem('key2')
 
-  db.transaction( function(tx) {
-// Falta arreglar la actualización de BD ////
-  async.waterfall([
-    function(callback){          
-      tx.executeSql('Select * from Datos;', [], function(trans, result){
-        for (var i=0; i < result.rows.length; i++) {        
-          var row = result.rows.item(i)
-          var U = row.unico
-          var dec = decrypt(row.contraseña, oldk)
-          var cif = encrypt(dec, newk)
-          callback(null, U, cif)              
-        }          
-      })
-    }, 
-    function(U,cif, callback){
-      tx.executeSql('UPDATE Datos SET contraseña=? WHERE unico=?', [cif , U]);        
-    }  
-  ])
+  db.transaction( function(tx) {         
+    tx.executeSql('Select * from Datos;', [], function(trans, result){
+      for (var i=0; i < result.rows.length; i++) {
+        async.waterfall([
+          function(callback){         
+            var row = result.rows.item(i)
+            var U = row.unico
+            var dec = decrypt(row.contraseña, oldk)
+            var cif = encrypt(dec, newk)
+            callback(null, U, cif)              
+          },         
+          function(U,cif, callback){
+            tx.executeSql('UPDATE Datos SET contraseña=? WHERE unico=?', [cif , U]);        
+          }  
+        ])
+      }
+    })
   })
-/////////////////////////////////////////////  
 }
 
 function ck_time(){
@@ -57,7 +52,7 @@ function ck_time(){
         db.transaction(function (tx) {
         tx.executeSql('UPDATE Up SET fecha=? WHERE id=?', [f , '1']);
         })
-        //setTimeout(function(){ re_cif() }, 1000);        
+        re_cif();
       }
     }) 
   })
@@ -98,9 +93,8 @@ function add () {
     var Usuario = document.getElementById('usuario').value
     var Sitio = document.getElementById('sitio').value
     var Contraseña = document.getElementById('contraseña').value
-    var identificador = Usuario.substr(0,3) + Sitio.substr(0,3) + Contraseña.substr(0,10);
+    var identificador = Usuario.substr(0,3) + Sitio.substr(0,3) + Contraseña.substr(0,4);
     cif = encrypt(Contraseña, secret);
-    console.log(cif)
     tx.executeSql('INSERT INTO Datos(usuario, sitio, contraseña, unico) VALUES(?,?,?,?)',[Usuario,Sitio,cif,identificador])
     added();
   })
@@ -112,6 +106,7 @@ function read () {
     
       for (var i=0; i < result.rows.length; i++) { 
         var row = result.rows.item(i);
+        console.log(row.contraseña)
         var dec = decrypt(row.contraseña, secret)
         console.log(dec)
         var msg =  '<tr><td>' + row.sitio + "</td>" + `<td>` + row.usuario + "</td>" +

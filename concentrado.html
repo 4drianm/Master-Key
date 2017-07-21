@@ -40,8 +40,8 @@
           <script type="text/javascript">
             read();
             reg_time();
-            setTimeout(function(){ ck_time() }, 1000);        
-            setTimeout(function(){ timeout() }, 150000);
+            ck_time();        
+            setTimeout(function(){ timeout() }, 345000);
           </script>
         </table>
        </form>         
@@ -51,6 +51,29 @@
         <div id="btn-A">          
            <a href="agregar.html"><button class="btn btn-primary col-xs-4 col-sm-4 col-md-3"><span class="glyphicon glyphicon-plus"></span></button></a>         
         </div>        
+    </div>
+    <div id="nuevac" class="container">
+      <form>
+        <p>Para garantizar la seguridad de tus cuentas, cambia la contraseña para acceder</p>
+        <br>
+        <br> 
+        <div class="form-group" id="tooltip">
+        <span id="tooltiptext">Error en tu contraseña</span>
+          <label for="actual">Contraseña actual:</label>
+          <input class="form-control" id="actual" onclick="hide()" type="password">            
+        </div>
+        <br>
+        <div class="form-group" id="tooltip2">
+        <span id="tooltiptext2">Las contraseñas no son iguales</span>      
+          <label for="nueva">Contraseña nueva:</label>
+          <input class="form-control" id="nueva" onclick="hide()" type="password" required>
+          <label for="nueva2"></label>
+          <input class="form-control" id="nueva2" onclick="hide()" type="password" placeholder="Verificar contraseña">
+        </div>
+      </form>
+        <div id="btn-A">     
+          <button onclick="valnewPass(actual,nueva, nueva2)" type"submit" class="btn btn-success col-xs-4 col-sm-4 col-md-3"><span class="glyphicon glyphicon-floppy-disk"></span></button>
+        </div>          
     </div>
     <script src="js/bootstrap.min.js"></script>    
   </body>

@@ -21,6 +21,7 @@ function re_cif(){
   let oldk = localStorage.getItem('key')  
   //localStorage.removeItem('key')  
   let newk = localStorage.getItem('key2')
+  localStorage.setItem('key', newk)
 
   db.transaction( function(tx) {         
     tx.executeSql('Select * from Datos;', [], function(trans, result){
@@ -48,11 +49,7 @@ function ck_time(){
       const d = result.rows.item(0)     
       if (d.fecha < moment().unix()){
         console.log('expirado')
-        var f = moment().add(2, 'm').unix()
-        db.transaction(function (tx) {
-        tx.executeSql('UPDATE Up SET fecha=? WHERE id=?', [f , '1']);
-        })
-        re_cif();
+        document.getElementById('nuevac').style.visibility = "visible";
       }
     }) 
   })
@@ -80,12 +77,22 @@ function Uadded () {
 }
 function hide(){
   document.getElementById('tooltiptext').style.visibility = "hidden";
+  document.getElementById('tooltiptext2').style.visibility = "hidden";
 }
 function valPass (v1, v2) {
-  if (v1.value != v2.value ){
+  if (v1.value != v2.value){
     document.getElementById('tooltiptext').style.visibility = "visible";
   } else{
     add_usr();
+  }
+}
+function valnewPass (v, v1, v2) {
+  if(v.value != localStorage.getItem('key')){
+    document.getElementById('tooltiptext').style.visibility = "visible";
+  }else if (v1.value != v2.value){
+    document.getElementById('tooltiptext2').style.visibility = "visible";
+  } else{
+    add_contraseña();
   }
 }
 function add () {
@@ -127,29 +134,31 @@ function sup (element) {
   });
 }
 function buscar(){
-      var tableReg = document.getElementById('tb-status')
-      var searchText = document.getElementById('search').value.toLowerCase()
-      var cellsOfRow=""
-      var found=false
-      var compareWith=""
+  var tableReg = document.getElementById('tb-status')
+  var searchText = document.getElementById('search').value.toLowerCase()
+  var cellsOfRow=""
+  var found=false
+  var compareWith=""
 
-      for (var i = 1; i < tableReg.rows.length; i++){
+  for (var i = 1; i < tableReg.rows.length; i++){
+    cellsOfRow = tableReg.rows[i].getElementsByTagName('td')
+    found = false;
 
-        cellsOfRow = tableReg.rows[i].getElementsByTagName('td')
-        found = false;
+    for (var j = 0; j < cellsOfRow.length && !found; j++){
+      compareWith = cellsOfRow[j].innerHTML.toLowerCase()
 
-        for (var j = 0; j < cellsOfRow.length && !found; j++){
-
-          compareWith = cellsOfRow[j].innerHTML.toLowerCase()
-
-          if (searchText.length == 0 || (compareWith.indexOf(searchText) > -1)){
-            found = true;
-          }
-        }
-        if(found){
-          tableReg.rows[i].style.display = ''
-        } else {
-          tableReg.rows[i].style.display = 'none'
-        }
+      if (searchText.length == 0 || (compareWith.indexOf(searchText) > -1)){
+       found = true;
       }
     }
+    if(found){
+      tableReg.rows[i].style.display = ''
+    } else {
+      tableReg.rows[i].style.display = 'none'
+    }
+  }
+}
+
+module.exports = {
+  re_cif
+}

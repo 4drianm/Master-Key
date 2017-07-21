@@ -29,6 +29,20 @@ function add_usr () {
     Uadded();
   })
 }
+function add_contraseña (){
+    var P = document.getElementById('nueva').value
+    var f = moment().add(2, 'm').unix()
+    localStorage.setItem('key2',P)
+    hash.update (P)
+    var H = hash.digest('hex')
+    db.transaction(function(tx){
+    tx.executeSql('UPDATE User SET pass=?', [H])
+    tx.executeSql('UPDATE Up SET fecha=? WHERE id=?', [f , '1']);
+
+    re_cif();
+    added();
+  })
+}
 function encrypt(text, password){
   var cipher = crypto.createCipher('aes-256-cbc', password)
   var crypted = cipher.update(text,'utf8','hex')

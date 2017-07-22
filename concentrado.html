@@ -26,7 +26,31 @@
           </div>
         </div>
       </header>
-    </div>      
+    </div>    
+
+    <div id="nuevac">
+            <form action="">
+            <p>Para garantizar la seguridad de tus cuentas, cambia la contraseña para acceder</p> 
+           <div class="form-group">
+                <label for="contraseñav">Contraseña actual:</label>
+                <input class="form-control" id="contraseñav" type="password">
+                
+           </div>
+           <div class="form-group">
+                <label for="contraseñan">Contraseña nueva:</label>
+                <input class="form-control" id="contraseñan" type="password">
+           </div>
+           <div class="form-group">
+               <label for="contraseñan">Verificar contraseña:</label>
+                <input class="form-control" id="vercontraseña" type="password">
+           </div>
+           <div id="btn-A">     
+            <button onclick="add_contraseña(contraseñav,vercontraseña)" type"submit" class="btn btn-success col-xs-4 col-sm-4 col-md-3"><span class="glyphicon glyphicon-floppy-disk"></span></button>
+        </div>  
+        </form>   
+    </div>
+    <br>   
+    <br>
     <div class="container" id="claves">               
       <div class="table-responsive">      
        <form action="">
@@ -51,7 +75,6 @@
         <div id="btn-A">          
            <a href="agregar.html"><button class="btn btn-primary col-xs-4 col-sm-4 col-md-3"><span class="glyphicon glyphicon-plus"></span></button></a>         
         </div>        
-    </div>
-    <script src="js/bootstrap.min.js"></script>    
+    </div>    
   </body>
 </html>

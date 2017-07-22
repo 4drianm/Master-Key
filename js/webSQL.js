@@ -47,6 +47,41 @@ function re_cif(){
 /////////////////////////////////////////////  
 }
 
+function errorHandler(transaction, error)
+{
+    // error.message is a human-readable string.
+    // error.code is a numeric error code
+    alert('Oops.  Error was '+error.message+' (Code '+error.code+')');
+ 
+    // Handle errors here
+    var we_think_this_error_is_fatal = true;
+    if (we_think_this_error_is_fatal) return true;
+    return false;
+}
+ 
+
+function verif_usr() {
+
+  db.readTransaction(function (tx){
+    var U = document.getElementById('usuario').value
+    var P = document.getElementById('pass').value
+    var H = require('crypto').createHash('sha256').update(P).digest('hex')
+    tx.executeSql('Select * from User where usr=? AND pass=?',[U,H], function(transaction, result, errorHandler){
+
+        // Each row is a standard JavaScript array indexed by
+        // column names.
+        var row = result.rows.item(0);
+        if (row.pass == H){
+        var pass = localStorage.setItem("key", P)
+        added()
+      }
+      else{
+        alert('hola')
+      }
+    })
+  })
+}
+
 function ck_time(){
   db.readTransaction( function(tx) {
     tx.executeSql('Select * from Up;', [], function(transaction, result){

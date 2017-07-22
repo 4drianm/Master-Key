@@ -28,6 +28,20 @@ function add_usr () {
     Uadded();
   })
 }
+
+function add_contraseña () {
+  db.transaction(function (tx){
+    var P = document.getElementById('contraseñav').value
+    var N = document.getElementById('vercontraseña').value
+
+    var H = require('crypto').createHash('sha256').update(P).digest('hex')
+    var R = require('crypto').createHash('sha256').update(N).digest('hex')
+
+    tx.executeSql('UPDATE User set pass=? Where pass=?',[R,H])
+
+  })
+}
+
 function encrypt(text, password){
   var cipher = crypto.createCipher('aes-256-cbc', password)
   var crypted = cipher.update(text,'utf8','hex')

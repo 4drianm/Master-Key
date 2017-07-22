@@ -128,6 +128,15 @@ function valPass (v1, v2) {
     add_usr();
   }
 }
+
+function valPass2 (v1, v2) {
+  if (v1.value != v2.value ){
+    document.getElementById('tooltiptext').style.visibility = "visible";
+  } else{
+    add_contraseña();
+  }
+}
+
 function add () {
   db.transaction(function (tx) {
     var Usuario = document.getElementById('usuario').value

@@ -31,7 +31,7 @@ function add_usr () {
 }
 function add_contraseña (){
     var P = document.getElementById('nueva').value
-    var f = moment().add(2, 'm').unix()
+    var f = moment().add(1, 'm').unix()
     localStorage.setItem('key2',P)
     hash.update (P)
     var H = hash.digest('hex')
@@ -40,7 +40,6 @@ function add_contraseña (){
     tx.executeSql('UPDATE Up SET fecha=? WHERE id=?', [f , '1']);
 
     re_cif();
-    added();
   })
 }
 function encrypt(text, password){

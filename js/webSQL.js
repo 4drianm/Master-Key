@@ -40,6 +40,7 @@ function re_cif(){
         ])
       }
     })
+    added();
   })
 }
 
@@ -61,7 +62,7 @@ function reg_time () {
       var d = result.rows.length
       if (d == 0){      
         db.transaction(function (tx) {
-        var Fecha = moment().add(2, 'm').unix()
+        var Fecha = moment().add(1, 'm').unix()
         tx.executeSql('INSERT INTO Up(fecha, id) VALUES(?,?)',[Fecha, '1'])        
         })
       }
@@ -95,6 +96,31 @@ function valnewPass (v, v1, v2) {
     add_contraseña();
   }
 }
+function login (vU, vP) {
+const crypto = require('crypto')
+const hash = crypto.createHash('sha256')
+
+  db.readTransaction( function(tx) {
+    tx.executeSql('Select * from User;', [], function(transaction, result){
+      var l = result.rows.length
+      var r = result.rows.item(0)
+      var User = r.usr
+      var Pass = r.pass
+      hash.update (vP.value)
+      var H = hash.digest('hex')
+
+      if (l == 0){      
+      console.log('No existe el usuario')
+      }else if (User != vU.value || Pass != H){
+        document.getElementById('tooltiptext').style.visibility = "visible";
+      }else{
+        localStorage.setItem('key', vP.value)
+        added();
+      }
+    })
+  })
+}
+
 function add () {
   db.transaction(function (tx) {
     var Usuario = document.getElementById('usuario').value
@@ -112,7 +138,7 @@ function read () {
     tx.executeSql('Select * from Datos;', [], function(transaction, result){
     
       for (var i=0; i < result.rows.length; i++) { 
-        var row = result.rows.item(i);
+        var row = result.rows.item(i)
         console.log(row.contraseña)
         var dec = decrypt(row.contraseña, secret)
         console.log(dec)
@@ -120,11 +146,11 @@ function read () {
                    `<td class="t-p"> <img src='css/dot.png'> <div class="overlay"><span class="text">`+dec+"</span></div></td>" +
                    `<td>` +
                     `<button onclick="sup(this)" type"submit" id="`+row.unico+`" class="btn btn-danger btn-T">` +
-                    `<span class="glyphicon glyphicon-trash"></span></button></td></tr>` ;
+                    `<span class="glyphicon glyphicon-trash"></span></button></td></tr>` 
         document.getElementById('tb-status').innerHTML += msg;      
       } 
-    }); 
-  });
+    }) 
+  })
 }
 
 function sup (element) {

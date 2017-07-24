@@ -58,15 +58,15 @@
         <br>
         <br> 
         <div class="form-group" id="tooltip">
-        <span id="tooltiptext">Error en tu contraseña</span>
+        <span id="tooltiptext">Error en tu contraseña actual</span>
           <label for="actual">Contraseña actual:</label>
           <input class="form-control" id="actual" onclick="hide()" type="password">            
         </div>
         <br>
         <div class="form-group" id="tooltip2">
-        <span id="tooltiptext2">Las contraseñas no son iguales</span>      
+        <span id="tooltiptext2">Error en la nueva contraseña</span>      
           <label for="nueva">Contraseña nueva:</label>
-          <input class="form-control" id="nueva" onclick="hide()" type="password" required>
+          <input class="form-control" id="nueva" onclick="hide()" type="password" data-toggle="tooltip" data-placement="bottom" title="Mínimo 6 caracteres">
           <label for="nueva2"></label>
           <input class="form-control" id="nueva2" onclick="hide()" type="password" placeholder="Verificar contraseña">
         </div>

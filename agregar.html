@@ -22,15 +22,16 @@
         </nav>
       </header>
     </div>
-     <div class="container">
+     <div class="container" id="tooltip">
+     <span id="tooltiptext">El usuario es requerido</span>
       <form id="sendDatos">
         <div class="form-group">
             <label>Usuario:</label>
-            <input class="form-control" id="usuario" type="text" required data-toggle="tooltip" data-placement="bottom" title="Pegar Ctrl+V">
+            <input class="form-control" id="usuario" type="text" data-toggle="tooltip" data-placement="bottom" title="Pegar Ctrl+V" onclick="hide()">
         </div>
         <div class="form-group">
             <label>Sitio:</label>
-            <input class="form-control" id="sitio" type="text" placeholder="sitio.com" required data-toggle="tooltip" data-placement="bottom" title="Pegar Ctrl+V">
+            <input class="form-control" id="sitio" type="text" placeholder="sitio.com" data-toggle="tooltip" data-placement="bottom" title="Pegar Ctrl+V">
         </div>        
         <div id="pass" class="form-group" data-toggle="tooltip" data-placement="bottom" title="Copiar Ctrl+C">
         <input type="text" class="form-control" id="contraseña">

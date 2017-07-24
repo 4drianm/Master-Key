@@ -19,7 +19,7 @@ function re_cif(){
   const async = require('async')
   const waterfall = require('async/waterfall')
   let oldk = localStorage.getItem('key')  
-  //localStorage.removeItem('key')  
+  localStorage.removeItem('key')  
   let newk = localStorage.getItem('key2')
   localStorage.setItem('key', newk)
 
@@ -35,12 +35,12 @@ function re_cif(){
             callback(null, U, cif)              
           },         
           function(U,cif, callback){
-            tx.executeSql('UPDATE Datos SET contraseña=? WHERE unico=?', [cif , U]);        
+            tx.executeSql('UPDATE Datos SET contraseña=? WHERE unico=?', [cif , U])        
           }  
         ])
       }
     })
-    added();
+    added()
   })
 }
 
@@ -62,7 +62,7 @@ function reg_time () {
       var d = result.rows.length
       if (d == 0){      
         db.transaction(function (tx) {
-        var Fecha = moment().add(1, 'm').unix()
+        var Fecha = moment().add(3, 'M').unix()
         tx.executeSql('INSERT INTO Up(fecha, id) VALUES(?,?)',[Fecha, '1'])        
         })
       }
@@ -71,27 +71,27 @@ function reg_time () {
 }
 
 function added () {
-  location.href = "concentrado.html";
+  location.href = "concentrado.html"
 }
 function Uadded () {
-  location.href = "index.html";
+  location.href = "index.html"
 }
 function hide(){
-  document.getElementById('tooltiptext').style.visibility = "hidden";
-  document.getElementById('tooltiptext2').style.visibility = "hidden";
+  document.getElementById('tooltiptext').style.visibility = "hidden"
+  document.getElementById('tooltiptext2').style.visibility = "hidden"
 }
 function valPass (v1, v2) {
   if (v1.value != v2.value){
-    document.getElementById('tooltiptext').style.visibility = "visible";
+    document.getElementById('tooltiptext2').style.visibility = "visible"
   } else{
     add_usr();
   }
 }
 function valnewPass (v, v1, v2) {
   if(v.value != localStorage.getItem('key')){
-    document.getElementById('tooltiptext').style.visibility = "visible";
+    document.getElementById('tooltiptext').style.visibility = "visible"
   }else if (v1.value != v2.value){
-    document.getElementById('tooltiptext2').style.visibility = "visible";
+    document.getElementById('tooltiptext2').style.visibility = "visible"
   } else{
     add_contraseña();
   }
@@ -121,16 +121,21 @@ const hash = crypto.createHash('sha256')
   })
 }
 
-function add () {
-  db.transaction(function (tx) {
-    var Usuario = document.getElementById('usuario').value
-    var Sitio = document.getElementById('sitio').value
-    var Contraseña = document.getElementById('contraseña').value
-    var identificador = Usuario.substr(0,3) + Sitio.substr(0,3) + Contraseña.substr(0,4);
-    cif = encrypt(Contraseña, secret);
-    tx.executeSql('INSERT INTO Datos(usuario, sitio, contraseña, unico) VALUES(?,?,?,?)',[Usuario,Sitio,cif,identificador])
-    added();
-  })
+function add () {  
+var Usuario = document.getElementById('usuario').value
+var Sitio = document.getElementById('sitio').value
+var Contraseña = document.getElementById('contraseña').value
+var identificador = Usuario.substr(0,3) + Sitio.substr(0,3) + Contraseña.substr(0,4);
+cif = encrypt(Contraseña, secret);
+  
+  if(Usuario == ""){
+    document.getElementById('tooltiptext').style.visibility = "visible";
+  }else{
+    db.transaction(function (tx) {
+      tx.executeSql('INSERT INTO Datos(usuario, sitio, contraseña, unico) VALUES(?,?,?,?)',[Usuario,Sitio,cif,identificador])
+      added();
+    })
+  }
 }
 
 function read () {

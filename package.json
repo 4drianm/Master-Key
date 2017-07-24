@@ -1,6 +1,6 @@
 {
   "name": "MasterKey",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "author": "Team1 <team1@team.com>",
   "license": "MIT",
   "description": "Generador de contraseñas. App hecha con Electron.",
@@ -15,7 +15,6 @@
     "dist": "electron-builder"
   },
   "build": {
-    "appId": "com.team1.MK",
     "dmg": {
       "contents": [
         {
@@ -31,8 +30,7 @@
       ]
     },
     "linux": {
-      "target": [
-        "AppImage",
+      "target": [        
         "deb"
       ]
     },

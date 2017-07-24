@@ -17,30 +17,44 @@ function generar(longitud){
 
 function timeout () {
 	location.href = "index.html";
-  //localStorage.clear()
+  localStorage.clear()
 }
+
 function add_usr () {
-  db.transaction(function (tx){
-    var U = document.getElementById('usr').value
-    var P = document.getElementById('pass').value
-    hash.update(P)
-    var H = hash.digest('hex')
-    tx.executeSql('INSERT INTO User(usr, pass) VALUES(?,?)',[U,H])
-    Uadded();
-  })
+let U = document.getElementById('usr').value
+let P = document.getElementById('pass').value
+var mail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+  
+  if(U == "" || !mail.test(U)){
+    document.getElementById('tooltiptext').style.visibility = "visible"
+  }else if(P == "" || P.length <= 5){
+    document.getElementById('tooltiptext2').style.visibility = "visible"
+  }else{
+    db.transaction(function (tx){      
+      hash.update(P)
+      var H = hash.digest('hex')
+      tx.executeSql('INSERT INTO User(usr, pass) VALUES(?,?)',[U,H])
+      Uadded()
+    })  
+  }
 }
+
 function add_contraseña (){
-    var P = document.getElementById('nueva').value
-    var f = moment().add(1, 'm').unix()
+    let P = document.getElementById('nueva').value    
+    if(P == "" || P.length <= 5){
+      document.getElementById('tooltiptext2').style.visibility = "visible"
+    }else{
+    var f = moment().add(3, 'M').unix()
     localStorage.setItem('key2',P)
     hash.update (P)
     var H = hash.digest('hex')
-    db.transaction(function(tx){
-    tx.executeSql('UPDATE User SET pass=?', [H])
-    tx.executeSql('UPDATE Up SET fecha=? WHERE id=?', [f , '1']);
-
-    re_cif();
-  })
+      db.transaction(function(tx){
+        tx.executeSql('UPDATE User SET pass=?', [H])
+        tx.executeSql('UPDATE Up SET fecha=? WHERE id=?', [f , '1']);
+  
+        re_cif();
+      })
+    }
 }
 function encrypt(text, password){
   var cipher = crypto.createCipher('aes-256-cbc', password)
